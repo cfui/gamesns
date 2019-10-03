@@ -1,0 +1,2 @@
+class GameEventController < ApplicationController
+end
