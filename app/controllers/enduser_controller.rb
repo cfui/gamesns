@@ -9,4 +9,5 @@ class EnduserController < ApplicationController
   end
 
   def dm
+  end
 end

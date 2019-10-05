@@ -1,6 +1,6 @@
 Rails.application.routes.draw do
 
-  post 'post/new' => 'post/new#create'
+  devise_for :endusers
 
 
   resources :admins, only: [:index]
