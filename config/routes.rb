@@ -17,5 +17,7 @@ Rails.application.routes.draw do
       get 'dm'
     end
   end
+
+  
 end
 
