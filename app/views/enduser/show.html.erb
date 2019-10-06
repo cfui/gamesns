@@ -1,9 +1,12 @@
 <h1>Enduser#show</h1>
 <p>Find me in app/views/enduser/show.html.erb</p>
 
+<%= @enduser.nickname %>
+
 <p>メールアドレス</p>
 <%= @enduser.email %>
 
+<br><br>
 
 <% if @enduser.id == current_enduser.id %>
   <%= link_to "プロフィール編集", edit_enduser_path(@enduser) %>

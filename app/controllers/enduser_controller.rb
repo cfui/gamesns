@@ -2,6 +2,10 @@ class EnduserController < ApplicationController
   def index
   end
 
+  def new
+    @enduser = Enduser.new
+  end
+
   def show
   	@enduser = Enduser.find(params[:id])
   end
@@ -15,5 +19,10 @@ class EnduserController < ApplicationController
   end
 
   def dm
+  end
+
+  private
+  def enduser_params
+    params.require(:endouser).permit(:nickname)
   end
 end
