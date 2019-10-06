@@ -1,2 +1,12 @@
 <h1>Enduser#edit</h1>
 <p>Find me in app/views/enduser/edit.html.erb</p>
+
+<%= form_for(@enduser) do |f| %>
+  <p>ハンドルネーム</p>
+  <%= f.text_field :nickname %>
+  <p>自己紹介</p>
+  <%= f.text_area :profile_text %>
+  <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fillback: "no_image.jpg" %>
+  <%= f.attachment_field :profile_image, placeholder:"アイコン画像" %>
+  <%= f.submit'変更を保存' %>
+<% end %>

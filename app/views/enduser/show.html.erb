@@ -2,6 +2,7 @@
 <p>Find me in app/views/enduser/show.html.erb</p>
 
 <%= @enduser.nickname %>
+<%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fillback: "no_image.jpg" %>
 
 <p>メールアドレス</p>
 <%= @enduser.email %>

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_05_055914) do
+ActiveRecord::Schema.define(version: 2019_10_06_095705) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -42,8 +42,8 @@ ActiveRecord::Schema.define(version: 2019_10_05_055914) do
     t.string "last_sign_in_ip"
     t.string "password"
     t.string "nickname"
-    t.text "profire_text"
-    t.string "icon"
+    t.text "profile_text"
+    t.string "profile_image_id"
     t.index ["email"], name: "index_endusers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_endusers_on_reset_password_token", unique: true
   end
@@ -72,6 +72,7 @@ ActiveRecord::Schema.define(version: 2019_10_05_055914) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.text "postbody"
+    t.integer "enduser_id"
   end
 
   create_table "room_locations", force: :cascade do |t|
