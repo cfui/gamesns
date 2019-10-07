@@ -3,7 +3,6 @@ class PostController < ApplicationController
   	@post = Post.new
   	@posts = Post.all
     @enduser = Enduser.find(current_enduser.id)
-    # @endusers = @enduser.post
   end
 
   def create

@@ -8,5 +8,6 @@ class Enduser < ApplicationRecord
   attachment :profile_image
 
   has_many :posts
+  has_many :enduser_gametags
 
 end

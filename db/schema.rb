@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_06_124415) do
+ActiveRecord::Schema.define(version: 2019_10_07_105417) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -25,6 +25,13 @@ ActiveRecord::Schema.define(version: 2019_10_06_124415) do
   create_table "dm_rooms", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+  end
+
+  create_table "enduser_gametags", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "enduser_id"
+    t.integer "game_tag_id"
   end
 
   create_table "endusers", force: :cascade do |t|

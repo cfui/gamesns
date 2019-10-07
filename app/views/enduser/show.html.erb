@@ -2,7 +2,7 @@
 <p>Find me in app/views/enduser/show.html.erb</p>
 
 <h3><%= @enduser.nickname %></h3>
-<%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fillback: "no_image.jpg" %>
+<%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
 
 <h3>メールアドレス</h3>
 <%= @enduser.email %>
@@ -22,7 +22,7 @@
 
 <% @posts.each do |post| %>
   <h4><%= post.enduser.nickname %></h4>
-  <%= attachment_image_tag post.enduser, :profile_image, :fill, 60, 60, fillback: "no_image.jpg" %>
+  <%= attachment_image_tag post.enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
   <p><%= post.postbody %></p>
   <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
 <% end %>
