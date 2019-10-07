@@ -72,5 +72,5 @@ gem 'devise'
 gem 'bootstrap-sass', '~> 3.3.6'
 # bootstrapはjqueryに依存する為追加
 gem 'jquery-rails'
-
+gem 'pry-byebug'
 

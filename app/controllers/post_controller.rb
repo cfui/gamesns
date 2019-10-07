@@ -2,6 +2,8 @@ class PostController < ApplicationController
   def new
   	@post = Post.new
   	@posts = Post.all
+    @enduser = Enduser.find(current_enduser.id)
+    # @endusers = @enduser.post
   end
 
   def create
@@ -14,6 +16,6 @@ class PostController < ApplicationController
   private
 
   def post_params
-  	params.require(:post).permit(:postbody)
+  	params.require(:post).permit(:postbody, :post_image)
   end
 end

@@ -8,6 +8,7 @@ class EnduserController < ApplicationController
 
   def show
   	@enduser = Enduser.find(params[:id])
+    @posts = @enduser.posts
   end
 
   def edit

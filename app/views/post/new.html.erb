@@ -3,10 +3,9 @@
 
 <%= form_for(@post, url: post_index_path) do |f| %>
 
-
-
   <p>投稿</p>
   <%= f.text_area :postbody %>
+  <%= f.attachment_field :post_image, placeholder:"画像投稿" %>
 
   <%= f.submit '投稿' %>
 
@@ -15,8 +14,9 @@
 
 <p>投稿一覧</p>
 <% @posts.each do |post| %>
-  <%= post.postbody %>
+    <h4><%= post.enduser.nickname %></h4>
+    <%= attachment_image_tag post.enduser, :profile_image, :fill, 60, 60, fillback: "no_image.jpg" %>
+    <p><%= post.postbody %></p>
+    <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
 <% end %>
-
-
 

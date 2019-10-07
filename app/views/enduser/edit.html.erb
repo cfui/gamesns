@@ -4,7 +4,7 @@
 <%= form_for(@enduser) do |f| %>
   <p>ハンドルネーム</p>
   <%= f.text_field :nickname %>
-  <p>自己紹介</p>
+  <p>プロフィール</p>
   <%= f.text_area :profile_text %>
   <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fillback: "no_image.jpg" %>
   <%= f.attachment_field :profile_image, placeholder:"アイコン画像" %>

@@ -1,14 +1,28 @@
 <h1>Enduser#show</h1>
 <p>Find me in app/views/enduser/show.html.erb</p>
 
-<%= @enduser.nickname %>
+<h3><%= @enduser.nickname %></h3>
 <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fillback: "no_image.jpg" %>
 
-<p>メールアドレス</p>
+<h3>メールアドレス</h3>
 <%= @enduser.email %>
+
+<h3>プロフィール</h3>
+<%= @enduser.profile_text %>
 
 <br><br>
 
 <% if @enduser.id == current_enduser.id %>
   <%= link_to "プロフィール編集", edit_enduser_path(@enduser) %>
+
+<% end %>
+
+
+<h2>あなたの投稿</h2>
+
+<% @posts.each do |post| %>
+  <h4><%= post.enduser.nickname %></h4>
+  <%= attachment_image_tag post.enduser, :profile_image, :fill, 60, 60, fillback: "no_image.jpg" %>
+  <p><%= post.postbody %></p>
+  <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
 <% end %>
