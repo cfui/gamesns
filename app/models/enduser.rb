@@ -9,5 +9,6 @@ class Enduser < ApplicationRecord
 
   has_many :posts
   has_many :enduser_gametags
+  accepts_nested_attributes_for :enduser_gametags, allow_destroy: true
 
 end

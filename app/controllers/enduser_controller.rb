@@ -13,6 +13,7 @@ class EnduserController < ApplicationController
 
   def edit
     @enduser = Enduser.find(params[:id])
+    @enduser.enduser_gametags.build
   end
 
   def destroy
@@ -33,6 +34,6 @@ class EnduserController < ApplicationController
 
   private
   def enduser_params
-    params.require(:enduser).permit(:nickname, :profile_text, :profile_image)
+    params.require(:enduser).permit(:nickname, :profile_text, :profile_image, enduser_gametags_attributes: [:id, :gametag, :_destroy])
   end
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_07_105417) do
+ActiveRecord::Schema.define(version: 2019_10_08_093629) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -31,7 +31,7 @@ ActiveRecord::Schema.define(version: 2019_10_07_105417) do
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer "enduser_id"
-    t.integer "game_tag_id"
+    t.string "gametag"
   end
 
   create_table "endusers", force: :cascade do |t|
@@ -61,11 +61,6 @@ ActiveRecord::Schema.define(version: 2019_10_07_105417) do
   end
 
   create_table "game_events", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "game_tags", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
