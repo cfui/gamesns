@@ -2,7 +2,10 @@ class PostController < ApplicationController
   def new
   	@post = Post.new
   	@posts = Post.all
-    @enduser = Enduser.find(current_enduser.id)
+    @tag = Enduser.find(params[:enduser_gametag_id][:enduser])
+
+    if @tag
+
   end
 
   def create

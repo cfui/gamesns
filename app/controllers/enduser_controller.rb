@@ -9,6 +9,7 @@ class EnduserController < ApplicationController
   def show
   	@enduser = Enduser.find(params[:id])
     @posts = @enduser.posts
+    @gametags = @enduser.enduser_gametags
   end
 
   def edit

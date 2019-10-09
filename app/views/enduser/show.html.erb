@@ -10,6 +10,11 @@
 <h3>プロフィール</h3>
 <%= @enduser.profile_text %>
 
+<h3>お気に入りのゲーム</h3>
+<% @gametags.each do |gametag| %>
+  <%= gametag.gametag %>
+<% end %>
+
 <br><br>
 
 <% if @enduser.id == current_enduser.id %>

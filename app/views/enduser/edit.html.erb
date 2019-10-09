@@ -11,6 +11,8 @@
   <%= f.attachment_field :profile_image, placeholder:"アイコン画像" %>
 
 　<h4>お気に入りのゲームを登録(複数可）</h4>
+
+<!-- cocoonを使用 -->
   <%= f.fields_for :enduser_gametags do |enduser_gametag| %>
 	<%= render 'enduser_gametag_fields', f: enduser_gametag %>
   <% end %>
