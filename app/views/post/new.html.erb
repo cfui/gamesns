@@ -17,12 +17,11 @@
   <% @taguser.uniq.each do |enduser| %>
     <% enduser.posts.each do |post| %>
       <h4><%= enduser.nickname %></h4>
-      <%= attachment_image_tag enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+      <%= attachment_image_tag enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
       <p><%= post.postbody %></p>
       <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
       <%= link_to 'ユーザー詳細ページへ', enduser_path(post.enduser) %>
+      <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
     <% end %>
   <% end %>
 
-
-<p>投稿一覧</p>

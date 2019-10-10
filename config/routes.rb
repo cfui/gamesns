@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   resources :admins, only: [:index]
 
 
-  resources :post, only: [:new, :create] do
+  resources :post, only: [:new, :show, :create] do
     resource :post_comments, only: [:create]
   end
 

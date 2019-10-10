@@ -1,0 +1,2 @@
+class DmEntry < ApplicationRecord
+end

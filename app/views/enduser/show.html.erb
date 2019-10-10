@@ -30,4 +30,5 @@
   <%= attachment_image_tag post.enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
   <p><%= post.postbody %></p>
   <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
+  <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
 <% end %>

@@ -10,16 +10,25 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_09_125228) do
+ActiveRecord::Schema.define(version: 2019_10_10_072641) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
   end
 
+  create_table "dm_entries", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "enduser_id"
+    t.integer "dm_room"
+  end
+
   create_table "dm_messages", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "enduser_id"
+    t.integer "dm_room_id"
   end
 
   create_table "dm_rooms", force: :cascade do |t|
@@ -79,11 +88,6 @@ ActiveRecord::Schema.define(version: 2019_10_09_125228) do
     t.text "postbody"
     t.integer "enduser_id"
     t.string "post_image_id"
-  end
-
-  create_table "room_locations", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
   end
 
 end

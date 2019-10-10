@@ -1,0 +1,21 @@
+<h3><%= @post.enduser.nickname %></h3>
+<%= attachment_image_tag @post.enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+<h3><%= @post.postbody %></h3>
+<%= attachment_image_tag @post, :post_image, :fill, 400, 300, format: 'jpeg' %>
+
+<br><br>
+
+<p>コメント数：<%= @post.post_comments.count %>件</p>
+
+
+
+<% @post.post_comments.each do |post_comment| %>
+  <%= post_comment.enduser.nickname %>
+  <%= attachment_image_tag post_comment.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+  <%= post_comment.comment %>
+<% end %>
+
+<%= form_for [@post,@post_comment] do |f| %>
+  <%= f.text_area :comment, placeholder:"コメントを入力" %>
+  <%= f.submit "送信する" %>
+<% end %>

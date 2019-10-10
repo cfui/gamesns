@@ -20,6 +20,13 @@ class PostController < ApplicationController
 
   end
 
+
+  def show
+    @post = Post.find(params[:id])
+    @post_comment = PostComment.new
+  end
+
+
   def create
   	@post = Post.new(post_params)
     @post.enduser_id = current_enduser.id

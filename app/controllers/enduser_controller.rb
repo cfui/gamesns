@@ -24,7 +24,7 @@ class EnduserController < ApplicationController
 
   def update
     @enduser = Enduser.find(params[:id])
-    @enduser.update!(enduser_params)
+    @enduser.update(enduser_params)
     redirect_to enduser_path(@enduser.id)
   end
 
