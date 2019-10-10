@@ -6,7 +6,9 @@ Rails.application.routes.draw do
   resources :admins, only: [:index]
 
 
-  resources :post, only: [:new, :create]
+  resources :post, only: [:new, :create] do
+    resource :post_comments, only: [:create]
+  end
 
 
   resources :game_event, only: [:index, :new, :edit, :show, :create, :update]
@@ -17,6 +19,8 @@ Rails.application.routes.draw do
       get 'dm'
     end
   end
+
+
 
   
 end

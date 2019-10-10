@@ -12,12 +12,17 @@
 <% end %>
 
 
-<p>投稿一覧</p>
-<% @posts.each do |post| %>
-    <h4><%= post.enduser.nickname %></h4>
-    <%= attachment_image_tag post.enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-    <p><%= post.postbody %></p>
-    <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
-    <%= link_to 'ユーザー詳細ページへ', enduser_path(post.enduser) %>
-<% end %>
+<h3>お気に入りゲームが同じ人の投稿</h3>
 
+  <% @taguser.uniq.each do |enduser| %>
+    <% enduser.posts.each do |post| %>
+      <h4><%= enduser.nickname %></h4>
+      <%= attachment_image_tag enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+      <p><%= post.postbody %></p>
+      <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
+      <%= link_to 'ユーザー詳細ページへ', enduser_path(post.enduser) %>
+    <% end %>
+  <% end %>
+
+
+<p>投稿一覧</p>

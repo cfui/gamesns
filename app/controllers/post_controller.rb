@@ -2,9 +2,21 @@ class PostController < ApplicationController
   def new
   	@post = Post.new
   	@posts = Post.all
-    @tag = Enduser.find(params[:enduser_gametag_id][:enduser])
+    @enduser = current_enduser.enduser_gametags 
+    #ログインしているユーザーの同じゲームタグを持っている他のユーザー一覧が[]に入る
+    @taguser = []  
 
-    if @tag
+    @enduser.each do |enduser_gametag|
+      @gametag = enduser_gametag.gametag
+      @tag = EnduserGametag.where(gametag: @gametag)
+    end
+
+    #@tagの中身がある場合のみ実行する
+    if @tag 
+      @tag.each do |tag|
+        @taguser << tag.enduser
+      end
+    end
 
   end
 
