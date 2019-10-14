@@ -10,6 +10,12 @@ class EnduserController < ApplicationController
   	@enduser = Enduser.find(params[:id])
     @posts = @enduser.posts
     @gametags = @enduser.enduser_gametags
+
+    # DM機能
+    @current_enduser_entry = DmEntry.where(enduser_id: current_enduser.id)
+    @enduser_entry = DmEntry.where(enduser_id: @enduser.id)
+    @room = DmRoom.new
+    @entry = DmEntry.new
   end
 
   def edit

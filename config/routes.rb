@@ -10,6 +10,9 @@ Rails.application.routes.draw do
     resource :post_comments, only: [:create]
   end
 
+  resources :dm_messages, only: [:create]
+
+  resources :dm_rooms, only: [:show, :create]
 
   resources :game_event, only: [:index, :new, :edit, :show, :create, :update]
 
@@ -19,9 +22,5 @@ Rails.application.routes.draw do
       get 'dm'
     end
   end
-
-
-
-  
 end
 

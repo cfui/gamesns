@@ -12,7 +12,7 @@ class PostController < ApplicationController
     end
 
     #@tagの中身がある場合のみ実行する
-    if @tag 
+    if @tag
       @tag.each do |tag|
         @taguser << tag.enduser
       end

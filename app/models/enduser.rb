@@ -12,4 +12,7 @@ class Enduser < ApplicationRecord
   accepts_nested_attributes_for :enduser_gametags, allow_destroy: true
 
   has_many :post_comments
+
+  has_many :dm_messages
+  has_many :dm_entries
 end
