@@ -1,2 +1,14 @@
 <h1>Admin#index</h1>
 <p>Find me in app/views/admin/index.html.erb</p>
+
+
+<%= search_form_for(@q, url: admin_index_path) do |f| %>
+  <%= f.search_field :nickname_cont %>
+
+   <%= f.submit "検索" %>
+<% end %>
+
+<% @endusers.each do |enduser| %>
+  <%= enduser.nickname %>
+  <%= attachment_image_tag enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+<% end %>
