@@ -1,9 +1,12 @@
 Rails.application.routes.draw do
+  get 'home/index'
+  root to: 'home#index'
 
   devise_for :endusers
+  devise_for :admins
 
 
-  resources :admins, only: [:index]
+  resources :admin, only: [:index]
 
 
   resources :post, only: [:new, :show, :create] do
