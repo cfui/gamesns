@@ -2,6 +2,7 @@ class PostController < ApplicationController
   def new
   	@post = Post.new
   	@posts = Post.all
+    p @posts
     @enduser = current_enduser.enduser_gametags 
     #ログインしているユーザーの同じゲームタグを持っている他のユーザー一覧が[]に入る
     @taguser = []  

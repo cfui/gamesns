@@ -6,7 +6,7 @@ Rails.application.routes.draw do
   devise_for :admins
 
 
-  resources :admin, only: [:index]
+  resources :admin, only: [:index, :destroy]
 
 
   resources :post, only: [:new, :show, :create] do
@@ -20,7 +20,7 @@ Rails.application.routes.draw do
   resources :game_event, only: [:index, :new, :edit, :show, :create, :update]
 
 
-  resources :enduser, only: [:index, :show, :edit, :update] do
+  resources :enduser, only: [:index, :show, :edit, :update, :destroy ] do
     member do
       get 'dm'
     end

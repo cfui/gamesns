@@ -22,7 +22,13 @@
             <ul class="header-list">
               <li><%=link_to '投稿', new_post_path %></li>
               <li><%= link_to 'マイページ', enduser_path(current_enduser.id) %></li>
+              <li><%= link_to 'マイページ編集', edit_enduser_path(current_enduser.id) %></li>
               <li><%= link_to 'ログアウト', destroy_enduser_session_path, method: :delete %></li>
+            </ul>
+
+          <% elsif admin_signed_in? %>
+            <ul>
+              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
             </ul>
 
           <% else %>
