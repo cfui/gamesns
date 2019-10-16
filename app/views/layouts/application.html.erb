@@ -10,35 +10,43 @@
   </head>
 
   <body>
-    <div class="container">
-      <div class="row">
-        
-        <div class="col-xs-2">
-          <h1>GameSns</h1>
-        </div>
-        
-        <div class="col-xs-10">
-          <% if enduser_signed_in? %>
-            <ul class="header-list">
-              <li><%=link_to '投稿', new_post_path %></li>
-              <li><%= link_to 'マイページ', enduser_path(current_enduser.id) %></li>
-              <li><%= link_to 'マイページ編集', edit_enduser_path(current_enduser.id) %></li>
-              <li><%= link_to 'ログアウト', destroy_enduser_session_path, method: :delete %></li>
-            </ul>
+    <header>
+      <div class="container">
+        <div class="row">
+          <div class="col-xs-2">
+            <h1 class="log">GameSns</h1>
+          </div>
 
-          <% elsif admin_signed_in? %>
-            <ul>
-              <li><%= link_to "ログアウト", destroy_admin_session_path, method: :delete %></li>
-            </ul>
+          <div class="col-xs-10">
+            <% if enduser_signed_in? %>
+                <div class="col-xs-11">
+                  <ul>
+                    <li class="enduser-header-list"><%=link_to 'ホーム', new_post_path ,:style=>"color:white;" %></li>
+                    <li class="enduser-header-list"><%=link_to 'about', new_post_path ,:style=>"color:white;" %></li>
+                    <li class="enduser-header-list"><%= link_to 'マイページ', enduser_path(current_enduser.id), :style=>"color:white;" %></li>
+                    <li class="enduser-header-list"><%= link_to 'マイページ編集', edit_enduser_path(current_enduser.id) ,:style=>"color:white;" %></li>
+                    <li class="enduser-header-list"><%= link_to 'ログアウト', destroy_enduser_session_path, :style=>"color:white;", method: :delete %></li>
+                  </ul>
+                </div>
 
-          <% else %>
-            <ul class="header-list">
-              <li><%=link_to 'ログイン', new_enduser_session_path %> </li>
-              <li><%=link_to '新規登録', new_enduser_registration_path %></li>
-            </ul>
-          <% end %>
+            <% elsif admin_signed_in? %>
+              <ul>
+                <li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, :style=>"color:white;", method: :delete %></li>
+              </ul>
+
+            <% else %>
+              <div class="col-xs-7"></div>
+                <div class="col-xs-4">
+                  <ul class="header-ul">
+                    <li class="header-list"><%=link_to 'ログイン', new_enduser_session_path ,:style=>"color:white;" %> </li>
+                    <li class="header-list"><%=link_to '新規登録', new_enduser_registration_path ,:style=>"color:white;" %></li>
+                  </ul>
+                </div>
+            </div>
+            <% end %>
+          </div>
       </div>
-    </div>
+    </header>
     <%= yield %>
   </body>
 </html>

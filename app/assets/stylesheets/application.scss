@@ -18,6 +18,41 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 
-.header-list {
-	display: block;
+ *{
+   margin: 0;
+   padding: 0;
+   box-sizing: border-box;
+ }
+
+
+// header部分
+
+.log {
+	color: gray;
 }
+
+header{
+    background-color: black;
+}
+
+
+.header-list {
+    width: 100px;
+    display: inline-block;
+    padding-top: 40px;
+}
+
+.enduser-header-list {
+    width: 150px;
+    display: inline-block;
+    padding-top: 40px;
+}
+
+.enduser-header-list:last-child {
+	padding-left: 30px;
+}
+
+
+
+
+

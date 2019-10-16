@@ -8,8 +8,8 @@ class PostController < ApplicationController
     @taguser = []  
 
     @enduser.each do |enduser_gametag|
-      @gametag = enduser_gametag.gametag
-      @tag = EnduserGametag.where(gametag: @gametag)
+      @gametag = enduser_gametag.tag_name
+      @tag = EnduserGametag.where(tag_name: @gametag)
     end
 
     #@tagの中身がある場合のみ実行する
