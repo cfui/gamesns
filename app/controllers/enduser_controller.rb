@@ -10,12 +10,26 @@ class EnduserController < ApplicationController
   	@enduser = Enduser.find(params[:id])
     @posts = @enduser.posts
     @gametags = @enduser.enduser_gametags
+    @room = DmRoom.new
 
     # DM機能
     @current_enduser_entry = DmEntry.where(enduser_id: current_enduser.id)
     @enduser_entry = DmEntry.where(enduser_id: @enduser.id)
-    @room = DmRoom.new
-    @entry = DmEntry.new
+    if @enduser.id == current_enduser.id
+    else
+      @current_enduser_entry.each do |cu|
+        @enduser_entry.each do |u|
+          if cu.dm_room_id == u.dm_room_id then
+            @isRoom = true
+            @roomId = cu.dm_room_id
+          end
+        end
+      end
+      if@isRoom
+      else
+        @entry = DmEntry.new
+      end
+    end
   end
 
   def edit
@@ -41,6 +55,6 @@ class EnduserController < ApplicationController
 
   private
   def enduser_params
-    params.require(:enduser).permit(:nickname, :profile_text, :profile_image, enduser_gametags_attributes: [:id, :gametag, :_destroy])
+    params.require(:enduser).permit(:nickname, :profile_text, :profile_image, enduser_gametags_attributes: [:id, :tag_name, :_destroy])
   end
 end

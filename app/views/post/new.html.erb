@@ -1,27 +1,45 @@
-<h1>Post#new</h1>
-<p>Find me in app/views/post/new.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-2"></div>
+    <div class="col-xs-10">
+      <h1>投稿ホーム</h1>
 
-<%= form_for(@post, url: post_index_path) do |f| %>
+      <%= form_for(@post, url: post_index_path) do |f| %>
 
-  <p>投稿</p>
-  <%= f.text_area :postbody %>
-  <%= f.attachment_field :post_image, placeholder:"画像投稿" %>
+        <p>投稿</p>
+        <%= f.text_area :postbody, size: "60x5"%>
+        <%= f.attachment_field :post_image, placeholder:"画像投稿" %>
 
-  <%= f.submit '投稿' %>
+        <%= f.submit '投稿' %>
 
-<% end %>
+      <% end %>
 
+      <h3>お気に入りゲームが同じ人の投稿</h3>
+      <% @taguser.uniq.each do |enduser| %>
+        <% enduser.posts.each do |post| %>
+          <table border="1">
+            <tbody>
+              <tr>
+                <td><%= attachment_image_tag enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %></td>
+                <td><b><%= enduser.nickname %></b>
+                  <p><%= post.postbody %></p>
+                </td>
+                <td><%= link_to 'ユーザーページへ', enduser_path(post.enduser) %>
+                  <br><br>
+                  <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
+                </td>
+              </tr>
+            </tbody>
+          </table>
+          <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
 
-<h3>お気に入りゲームが同じ人の投稿</h3>
+        <% end %>
+      <% end %>
 
-  <% @taguser.uniq.each do |enduser| %>
-    <% enduser.posts.each do |post| %>
-      <h4><%= enduser.nickname %></h4>
-      <%= attachment_image_tag enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-      <p><%= post.postbody %></p>
-      <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
-      <%= link_to 'ユーザー詳細ページへ', enduser_path(post.enduser) %>
-      <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
-    <% end %>
-  <% end %>
+      
+        
+    </div>
+  </div>
+</div>
+
 
