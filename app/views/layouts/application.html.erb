@@ -30,9 +30,12 @@
                 </div>
 
             <% elsif admin_signed_in? %>
-              <ul>
-                <li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, :style=>"color:white;", method: :delete %></li>
-              </ul>
+            <div class="col-xs-8"></div>
+              <div class="col-xs-4">
+                <ul>
+                  <li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, :style=>"color:white;", method: :delete %></li>
+                </ul>
+              </div>
 
             <% else %>
               <div class="col-xs-7"></div>

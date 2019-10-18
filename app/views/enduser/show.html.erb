@@ -1,53 +1,54 @@
-<h1>Enduser#show</h1>
-<p>Find me in app/views/enduser/show.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4"></div>
+      <div class="col-xs-8">
+  <h1>ユーザー詳細画面</h1>
 
 
-<h3><%= @enduser.nickname %></h3>
-<%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-
-<h3>メールアドレス</h3>
-<%= @enduser.email %>
-
-<h3>プロフィール</h3>
-<%= @enduser.profile_text %>
-
-<h3>お気に入りのゲーム</h3>
-<% @gametags.each do |gametag| %>
-  <%= gametag.tag_name %>
-<% end %>
-
-<br><br>
-
-<% if @enduser.id == current_enduser.id %>
-  <%= link_to "プロフィール編集", edit_enduser_path(@enduser) %>
-
-<% end %>
-
-
-<h2>あなたの投稿</h2>
-
-<% @posts.each do |post| %>
-  <h4><%= post.enduser.nickname %></h4>
-  <%= attachment_image_tag post.enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-  <p><%= post.postbody %></p>
-  <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
-  <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
-<% end %>
-
-<!-- DM機能 -->
-<% if @isRoom == true %>
-  <a href="/dm_rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
-
-<% else %>
-<% if @enduser != current_enduser %>
-<%= form_for @room, url: dm_room_path,html: {method: 'GET'} do |f| %>
-  <%= fields_for @entry do |e| %>
-    <%= e.hidden_field :enduser_id, value: @enduser.id %>
+  <B><%= @enduser.nickname %></B>
+  <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+  <br><br><br>
+  <b>メールアドレス</b>
+  <%= @enduser.email %>
+  <br><br><br>
+  <b>プロフィール</b>
+  <%= @enduser.profile_text %>
+  <br><br><br>
+  <b>お気に入りのゲーム</b>
+  <% @gametags.each do |gametag| %>
+    <%= gametag.tag_name %>
   <% end %>
 
-  <%= f.submit "DMを送る" %>
-<% end %>
+  <br><br>
 
-<% end %>
-<% end %>
+
+  <h3>ユーザー投稿一覧</h3>
+
+  <% @posts.each do |post| %>
+    <b><%= post.enduser.nickname %></b>
+    <%= attachment_image_tag post.enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+    <p><%= post.postbody %></p>
+    <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
+    <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
+  <% end %>
+
+  <!-- DM機能 -->
+  <% if @isRoom == true %>
+    <a href="/dm_rooms/<%= @roomId %>" class="btn btn-primary btn-lg">チャットへ</a>
+
+  <% else %>
+    <% if @enduser != current_enduser %>
+      <%= form_for @room, url: dm_room_path,html: {method: 'GET'} do |f| %>
+        <%= fields_for @entry do |e| %>
+          <%= e.hidden_field :enduser_id, value: @enduser.id %>
+        <% end %>
+
+        <%= f.submit "DMを送る" %>
+      <% end %>
+    <% end %>
+  <% end %>
+      </div>
+  </div>
+</div>
+
 

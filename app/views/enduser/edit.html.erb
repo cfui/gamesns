@@ -1,22 +1,34 @@
-<h1>Enduser#edit</h1>
-<p>Find me in app/views/enduser/edit.html.erb</p>
+<div class="container">
+  <div class="row">
+    <div class="col-xs-4"></div>
+      <div class="col-xs-8">
+        <h1>マイページ編集</h1>
 
 
-<%= form_for(@enduser) do |f| %>
-  <p>ハンドルネーム</p>
-  <%= f.text_field :nickname %>
-  <p>プロフィール</p>
-  <%= f.text_area :profile_text %>
-  <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
-  <%= f.attachment_field :profile_image, placeholder:"アイコン画像" %>
+        <%= form_for(@enduser) do |f| %>
+          <p>ハンドルネーム</p>
+          <%= f.text_field :nickname %>
+          <br><br>
+          <p>アイコン</p>
+          <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
+          <%= f.attachment_field :profile_image, placeholder:"アイコン画像" %>
+          <br>
+          <p>プロフィール</p>
+          <%= f.text_area :profile_text %>
 
-　<h4>お気に入りのゲームを登録(複数可）</h4>
+          <br>
+          <h4>お気に入りのゲームを登録(複数可）</h4>
 
-<!-- cocoonを使用 -->
-  <%= f.fields_for :enduser_gametags do |enduser_gametag| %>
-	<%= render 'enduser_gametag_fields', f: enduser_gametag %>
-  <% end %>
+        <!-- cocoonを使用 -->
+          <%= f.fields_for :enduser_gametags do |enduser_gametag| %>
+        	<%= render 'enduser_gametag_fields', f: enduser_gametag %>
+          <% end %>
 
-<%= link_to_add_association 'お気に入りのゲームを追加',f, :enduser_gametags %>
-  <%= f.submit'変更を保存' %>
-<% end %>
+        <%= link_to_add_association 'お気に入りのゲームを追加',f, :enduser_gametags %>
+        <br><br>
+          <%= f.submit'変更を保存' %>
+        <% end %>
+
+      </div>
+  </div>
+</div>

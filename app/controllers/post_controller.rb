@@ -1,25 +1,35 @@
 class PostController < ApplicationController
   def new
-  	@post = Post.new
-  	@posts = Post.all
-    p @posts
-    @enduser = current_enduser.enduser_gametags 
-    #ログインしているユーザーの同じゲームタグを持っている他のユーザー一覧が[]に入る
-    @taguser = []  
+    @post = Post.new
+    @posts = Post.all.order(created_at: :desc)
+    @gametag = current_enduser.enduser_gametags
+    @user= current_enduser.id
 
-    @enduser.each do |enduser_gametag|
-      @gametag = enduser_gametag.tag_name
-      @tag = EnduserGametag.where(tag_name: @gametag)
+    # -------タグ機能開始-------
+
+    # ログインユーザーがどんなタグを持っているか検索
+    @enduser_tags = EnduserGametag.where(enduser_id: current_enduser)
+    #↑配列になっていて取り出せない為,箱を用意
+    @enduser_tagnames = []
+    @enduser_tags.each do |enduser_tag|
+      @enduser_tagnames << enduser_tag.tag_name
     end
 
-    #@tagの中身がある場合のみ実行する
-    if @tag
-      @tag.each do |tag|
-        @taguser << tag.enduser
-      end
+    # 全体のタグと自分のタグを検索
+    @user_tags = EnduserGametag.where(tag_name: @enduser_tagnames)
+    @user_tags_ids = []
+    # タグが一致したユーザーidを取得
+    @user_tags.each do |u|
+      @user_tags_ids << u.enduser_id
     end
 
-  end
+    # タグが一致したユーザーidと全体のユーザーidを検索
+    @user_a = Enduser.where(id: @user_tags_ids) #自分と共通のタグを持っている人
+   end
+
+   # ----------タグ機能終了----------
+
+
 
 
   def show
