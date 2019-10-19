@@ -3,32 +3,37 @@
     <div class="col-xs-4"></div>
       <div class="col-xs-8">
         <h1>マイページ編集</h1>
-
-
-        <%= form_for(@enduser) do |f| %>
+          <%= form_for(@enduser) do |f| %>
+          <div class="field">
           <p>ハンドルネーム</p>
           <%= f.text_field :nickname %>
+        </div>
           <br><br>
+        <div class="field">
           <p>アイコン</p>
           <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
           <%= f.attachment_field :profile_image, placeholder:"アイコン画像" %>
+        </div>
           <br>
+        <div class="field">
           <p>プロフィール</p>
           <%= f.text_area :profile_text %>
+        </div>
 
           <br>
           <h4>お気に入りのゲームを登録(複数可）</h4>
 
-        <!-- cocoonを使用 -->
+        <!-- cocoonタグ -->
           <%= f.fields_for :enduser_gametags do |enduser_gametag| %>
         	<%= render 'enduser_gametag_fields', f: enduser_gametag %>
           <% end %>
-
-        <%= link_to_add_association 'お気に入りのゲームを追加',f, :enduser_gametags %>
+        <div class="links">
+          <%= link_to_add_association '>>お気に入りのゲームを追加',f, :enduser_gametags %>
+        </div>
         <br><br>
           <%= f.submit'変更を保存' %>
         <% end %>
-
       </div>
+    </div>
   </div>
 </div>

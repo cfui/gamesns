@@ -2,10 +2,6 @@ class EnduserController < ApplicationController
   def index
   end
 
-  def new
-    @enduser = Enduser.new
-  end
-
   def show
   	@enduser = Enduser.find(params[:id])
     @posts = @enduser.posts
@@ -34,7 +30,6 @@ class EnduserController < ApplicationController
 
   def edit
     @enduser = Enduser.find(params[:id])
-    @enduser.enduser_gametags.build
   end
 
   def destroy
