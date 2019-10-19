@@ -1,12 +1,12 @@
 class PostController < ApplicationController
   def new
-    @post = Post.new
     @posts = Post.all.order(created_at: :desc)
-    @gametag = current_enduser.enduser_gametags
+    if enduser_signed_in?
+    @post = Post.new
     @user= current_enduser.id
 
-    # -------タグ機能開始-------
 
+    # -------タグ機能-------
     # ログインユーザーがどんなタグを持っているか検索
     @enduser_tags = EnduserGametag.where(enduser_id: current_enduser)
     #↑配列になっていて取り出せない為,箱を用意
@@ -28,8 +28,9 @@ class PostController < ApplicationController
     # ↑のままだと投稿が表示できないので、まずタグが一致したユーザーと全体のユーザーidを検索
     @tag_posts = Post.where(enduser_id: @user_a) #タグが一致したユーザーの投稿を出している
    end
-
    # ----------タグ機能終了----------
+ else
+ end
 
 
 

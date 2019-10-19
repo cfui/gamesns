@@ -2,28 +2,43 @@
   <div class="row">
     <div class="col-xs-2"></div>
     <div class="col-xs-10">
-      <h1>投稿ホーム</h1>
+      <% if enduser_signed_in? %>
+        <h1>投稿ホーム</h1>
 
-      <%= form_for(@post, url: post_index_path) do |f| %>
+        <%= form_for(@post, url: post_index_path) do |f| %>
 
-        <p>投稿</p>
-        <%= f.text_area :postbody, size: "60x5"%>
-        <%= f.attachment_field :post_image, placeholder:"画像投稿" %>
+          <p>投稿</p>
+          <%= f.text_area :postbody, size: "60x5"%>
+          <%= f.attachment_field :post_image, placeholder:"画像投稿" %>
 
-        <%= f.submit '投稿' %>
+          <%= f.submit '投稿' %>
 
+        <% end %>
+
+
+        <% @tag_posts.each do |a| %>
+        <%= a.enduser.nickname %>
+        <%= attachment_image_tag a.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+        <%= a.postbody %>
+        <%= attachment_image_tag a, :post_image, :fill, 400, 300, format: 'jpeg' %>
+        <%= link_to 'ユーザー詳細ページへ', enduser_path(a.enduser.id) %>
+        <%= link_to "#{a.post_comments.count}コメント", post_path(a.id) %>
+        </br>
+        <% end %>
+
+      <% else %>
+        <h2>大阪GAMESNSへようこそ！</h2>
+        <p>ログインすればして便利な機能を使用できます！</p>
+        <% @posts.each do |o| %>
+          <%= o.enduser.nickname %>
+          <%= attachment_image_tag o.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+          <%= o.postbody %>
+          <%= attachment_image_tag o, :post_image, :fill, 400, 300, format: 'jpeg' %>
+          <%= link_to "#{o.post_comments.count}コメント", post_path(o.id) %>
+
+        <% end %>
       <% end %>
 
-
-      <% @tag_posts.each do |a| %>
-      <%= a.enduser.nickname %>
-      <%= attachment_image_tag a.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-      <%= a.postbody %>
-      <%= attachment_image_tag a, :post_image, :fill, 400, 300, format: 'jpeg' %>
-      <%= link_to 'ユーザー詳細ページへ', enduser_path(a.enduser.id) %>
-      <%= link_to "#{a.post_comments.count}コメント", post_path(a.id) %>
-      </br>
-      <% end %>
 
 
     </div>
