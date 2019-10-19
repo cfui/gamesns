@@ -1,13 +1,15 @@
-<% @entries.each do |e| %>
-  <%= attachment_image_tag @enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-  <p><%= e.enduser.nickname %></p>
+<% @entries.each do |entry| %>
+  <b><%= entry.enduser.nickname %></b>
+  <%= attachment_image_tag entry.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+  <br><br><br>
 <% end %>
 
 
 <% if @messages.present? %>
-  <% @messages.each do |m| %>
-    <%= m.enduser.nickname %>
-    <p><%= m.content %></p>
+  <% @messages.each do |message| %>
+    <b><%= message.enduser.nickname %></b>
+    <%= attachment_image_tag message.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+    <p><%= message.content %></p>
   <% end %>
 <% else %>
   <p>メッセージはまだありません</p>

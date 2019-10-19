@@ -7,12 +7,12 @@ class Enduser < ApplicationRecord
   # gem refileを使うのに必要な記述
   attachment :profile_image
 
-  has_many :posts
-  has_many :enduser_gametags
+  has_many :posts, dependent: :destroy
+  has_many :enduser_gametags, dependent: :destroy
   accepts_nested_attributes_for :enduser_gametags, allow_destroy: true
 
-  has_many :post_comments
+  has_many :post_comments, dependent: :destroy
 
-  has_many :dm_messages
-  has_many :dm_entries
+  has_many :dm_messages, dependent: :destroy
+  has_many :dm_entries, dependent: :destroy
 end

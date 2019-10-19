@@ -1,4 +1,4 @@
 class DmRoom < ApplicationRecord
-	has_many :dm_messages
-	has_many :dm_entries
+	has_many :dm_messages, dependent: :destroy
+	has_many :dm_entries, dependent: :destroy
 end
