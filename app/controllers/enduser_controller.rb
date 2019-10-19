@@ -1,6 +1,4 @@
 class EnduserController < ApplicationController
-  def index
-  end
 
   def show
   	@enduser = Enduser.find(params[:id])
@@ -33,6 +31,9 @@ class EnduserController < ApplicationController
   end
 
   def destroy
+    enduser = Enduser.find(params[:id])
+    enduser.destroy
+    redirect_to admin_index_path
   	session[:enduser_mail] = nil
   	redirect_to "/post/new"
   end

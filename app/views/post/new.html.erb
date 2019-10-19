@@ -16,13 +16,13 @@
         <% end %>
 
 
-        <% @tag_posts.each do |a| %>
-        <%= a.enduser.nickname %>
-        <%= attachment_image_tag a.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-        <%= a.postbody %>
-        <%= attachment_image_tag a, :post_image, :fill, 400, 300, format: 'jpeg' %>
-        <%= link_to 'ユーザー詳細ページへ', enduser_path(a.enduser.id) %>
-        <%= link_to "#{a.post_comments.count}コメント", post_path(a.id) %>
+        <% @tag_posts.each do |tag_post| %>
+        <%= tag_post.enduser.nickname %>
+        <%= attachment_image_tag tag_post.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+        <%= tag_post.postbody %>
+        <%= attachment_image_tag tag_post, :post_image, :fill, 400, 300, format: 'jpeg' %>
+        <%= link_to 'ユーザー詳細ページへ', enduser_path(tag_post.enduser.id) %>
+        <%= link_to "#{tag_post.post_comments.count}コメント", post_path(tag_post.id) %>
         </br>
         <% end %>
 
@@ -30,12 +30,12 @@
         <h2>大阪GAMESNSへようこそ！</h2>
         <p>ログインすれば投稿とコメントを見る以外の機能も使えるようになります！</p>
           <br>
-        <% @posts.each do |o| %>
-          <%= o.enduser.nickname %>
-          <%= attachment_image_tag o.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-          <%= o.postbody %>
-          <%= attachment_image_tag o, :post_image, :fill, 400, 300, format: 'jpeg' %>
-          <%= link_to "#{o.post_comments.count}コメント", post_path(o.id) %>
+        <% @posts.each do |post| %>
+          <%= post.enduser.nickname %>
+          <%= attachment_image_tag post.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+          <%= post.postbody %>
+          <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
+          <%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %>
 
         <% end %>
       <% end %>

@@ -5,9 +5,4 @@ class AdminController < ApplicationController
   	# @enduser = Enduser.find(params[:id])
   end
 
-  def destroy
-  	enduser = Enduser.find(params[:id])
-    enduser.destroy
-    redirect_to admin_index_path
-  end
 end
