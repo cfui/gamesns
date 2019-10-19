@@ -48,10 +48,6 @@ class EnduserController < ApplicationController
     redirect_to enduser_path(@enduser.id)
   end
 
-  def dm
-  end
-
-
 
   private
   def enduser_params

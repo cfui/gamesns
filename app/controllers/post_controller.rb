@@ -25,6 +25,8 @@ class PostController < ApplicationController
 
     # タグが一致したユーザーidと全体のユーザーidを検索
     @user_a = Enduser.where(id: @user_tags_ids) #自分と共通のタグを持っている人
+    # タグが一致したユーザーと全体のユーザーidを検索
+    @tag_posts = Post.where(enduser_id: @user_a) #タグが一致したユーザーのタグを出している
    end
 
    # ----------タグ機能終了----------
