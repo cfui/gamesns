@@ -2,35 +2,36 @@ class PostController < ApplicationController
   def new
     @posts = Post.all.order(created_at: :desc)
     if enduser_signed_in?
-    @post = Post.new
-    @user= current_enduser.id
+      @post = Post.new
+      @user= current_enduser.id
 
 
-    # -------タグ機能-------
-    # ログインユーザーがどんなタグを持っているか検索
-    @enduser_tags = EnduserGametag.where(enduser_id: current_enduser)
-    #↑配列になっていて取り出せない為,箱を用意
-    @enduser_tagnames = []
-    @enduser_tags.each do |enduser_tag|
-      @enduser_tagnames << enduser_tag.tag_name
+      # -------タグ機能-------
+      # ログインユーザーがどんなタグを持っているか検索
+      @enduser_tags = EnduserGametag.where(enduser_id: current_enduser)
+      #↑配列になっていて取り出せない為,箱を用意
+      @enduser_tagnames = []
+      @enduser_tags.each do |enduser_tag|
+        @enduser_tagnames << enduser_tag.tag_name
+      end
+
+      # 全体のタグと自分のタグを検索
+      @user_tags = EnduserGametag.where(tag_name: @enduser_tagnames)
+      @user_tags_ids = []
+      # タグが一致したユーザーidを取得
+      @user_tags.each do |u|
+        @user_tags_ids << u.enduser_id
+      end
+
+      # タグが一致したユーザーidと全体のユーザーidを検索
+      @user_a = Enduser.where(id: @user_tags_ids) #自分と共通のタグを持っている人
+      # ↑のままだと投稿がうまく表示できないので、まずタグが一致したユーザーと全体のユーザーidを検索
+      @tag_posts = Post.where(enduser_id: @user_a) #タグが一致したユーザーの投稿を出している
+
+     # ----------タグ機能終了----------
+    else
     end
-
-    # 全体のタグと自分のタグを検索
-    @user_tags = EnduserGametag.where(tag_name: @enduser_tagnames)
-    @user_tags_ids = []
-    # タグが一致したユーザーidを取得
-    @user_tags.each do |u|
-      @user_tags_ids << u.enduser_id
-    end
-
-    # タグが一致したユーザーidと全体のユーザーidを検索
-    @user_a = Enduser.where(id: @user_tags_ids) #自分と共通のタグを持っている人
-    # ↑のままだと投稿が表示できないので、まずタグが一致したユーザーと全体のユーザーidを検索
-    @tag_posts = Post.where(enduser_id: @user_a) #タグが一致したユーザーの投稿を出している
-   end
-   # ----------タグ機能終了----------
- else
- end
+  end
 
 
 

@@ -15,4 +15,7 @@ class Enduser < ApplicationRecord
 
   has_many :dm_messages, dependent: :destroy
   has_many :dm_entries, dependent: :destroy
+
+  validates :nickname, presence: true
+
 end

@@ -15,7 +15,11 @@
   <%= post_comment.comment %>
 <% end %>
 
-<%= form_for [@post,@post_comment] do |f| %>
-  <%= f.text_area :comment, placeholder:"コメントを入力" %>
-  <%= f.submit "送信する" %>
+<% if enduser_signed_in? %>
+  <%= form_for [@post,@post_comment] do |f| %>
+    <%= f.text_area :comment, placeholder:"コメントを入力" %>
+    <%= f.submit "送信する" %>
+  <% end %>
+
+<% else %>
 <% end %>

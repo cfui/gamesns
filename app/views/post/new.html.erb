@@ -28,7 +28,8 @@
 
       <% else %>
         <h2>大阪GAMESNSへようこそ！</h2>
-        <p>ログインすればして便利な機能を使用できます！</p>
+        <p>ログインすれば投稿とコメントを見る以外の機能も使えるようになります！</p>
+          <br>
         <% @posts.each do |o| %>
           <%= o.enduser.nickname %>
           <%= attachment_image_tag o.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>

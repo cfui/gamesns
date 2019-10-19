@@ -39,8 +39,12 @@ class EnduserController < ApplicationController
 
   def update
     @enduser = Enduser.find(params[:id])
-    @enduser.update(enduser_params)
-    redirect_to enduser_path(@enduser.id)
+    if @enduser.update(enduser_params)
+      redirect_to new_post_path
+    else
+      flash[:notice] = 'エラー！空白の欄があります'
+      redirect_to edit_enduser_path(current_enduser.id)
+    end
   end
 
 
