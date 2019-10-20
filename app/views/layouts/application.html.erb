@@ -19,15 +19,15 @@
 
           <div class="col-xs-10">
             <% if enduser_signed_in? %>
-                <div class="col-xs-11">
-                  <ul>
-                    <li class="enduser-header-list"><%=link_to 'ホーム', new_post_path ,:style=>"color:white;" %></li>
-                    <li class="enduser-header-list"><%=link_to 'about', home_about_path ,:style=>"color:white;" %></li>
-                    <li class="enduser-header-list"><%= link_to 'マイページ', enduser_path(current_enduser.id), :style=>"color:white;" %></li>
-                    <li class="enduser-header-list"><%= link_to 'マイページ編集', edit_enduser_path(current_enduser.id) ,:style=>"color:white;" %></li>
-                    <li class="enduser-header-list"><%= link_to 'ログアウト', destroy_enduser_session_path, :style=>"color:white;", method: :delete %></li>
-                  </ul>
-                </div>
+              <div class="col-xs-11">
+                <ul>
+                  <li class="enduser-header-list"><%=link_to 'ホーム', new_post_path ,:style=>"color:white;" %></li>
+                  <li class="enduser-header-list"><%=link_to 'about', home_about_path ,:style=>"color:white;" %></li>
+                  <li class="enduser-header-list"><%= link_to 'マイページ', enduser_path(current_enduser.id), :style=>"color:white;" %></li>
+                  <li class="enduser-header-list"><%= link_to 'マイページ編集', edit_enduser_path(current_enduser.id) ,:style=>"color:white;" %></li>
+                  <li class="enduser-header-list"><%= link_to 'ログアウト', destroy_enduser_session_path, :style=>"color:white;", method: :delete %></li>
+                </ul>
+              </div>
 
             <% elsif admin_signed_in? %>
             <div class="col-xs-8"></div>

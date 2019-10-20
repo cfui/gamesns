@@ -1,20 +1,30 @@
 <div class="container">
   <div class="row">
-    <div class="col-xs-3"></div>
+    <div class="col-xs-2"></div>
     <div class="col-xs-9">
 
       <% @entries.each do |entry| %>
-        <b><%= entry.enduser.nickname %></b>
-        <%= attachment_image_tag entry.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-        <br><br><br>
+        <div class="padding">
+          <b><%= entry.enduser.nickname %></b>
+          <%= attachment_image_tag entry.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+          <br><br><br>
+        </div>
       <% end %>
 
 
       <% if @messages.present? %>
         <% @messages.each do |message| %>
-          <b><%= message.enduser.nickname %></b>
-          <%= attachment_image_tag message.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-          <p><%= message.content %></p>
+        <table class="table table-striped">
+          <tbody>
+            <tr>
+              <th>
+                <%= message.enduser.nickname %><br>
+                <%= attachment_image_tag message.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+              </th>
+              <td><%= message.content %></td>
+          </tbody>
+        </table>
+
         <% end %>
       <% else %>
         <p>メッセージはまだありません</p>
@@ -25,6 +35,7 @@
         <%= f.text_field :content, :placeholder => "メッセージを入力してください" , :size => 70%>
         <%= f.hidden_field :dm_room_id, value: @room.id %>
         <%= f.submit "投稿" %>
+        <br><br>
       <% end %>
     </div>
   </div>
