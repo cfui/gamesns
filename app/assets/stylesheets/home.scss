@@ -3,11 +3,24 @@
 // You can use Sass (SCSS) here: http://sass-lang.com/
 
 
+//トップページ
+
 home-body {
 	text-align: center;
 }
 
+
+
+
+//aboutページ
+
+
 .background {
     background-size: cover;
 	background-image: url('/game.jpg');
+}
+
+.about-box {
+	border: 1px solid;
+	background-color: #f0f0f0;
 }
