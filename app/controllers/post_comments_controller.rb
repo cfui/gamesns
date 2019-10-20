@@ -5,7 +5,7 @@ class PostCommentsController < ApplicationController
   end
 
   def show
-  	@post = Post.find(params[:id])
+  	@posts = Post.find(params[:id])
   end
 
   def create
