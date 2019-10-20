@@ -14,10 +14,9 @@
             <br><br><br>
         <% end %>
 
-
+      <table class="table table-striped">
+        <tbody>
         <% @tag_posts.each do |tag_post| %>
-          <table class="table table-striped">
-            <tbody>
               <tr>
                 <th>
                   <%= tag_post.enduser.nickname %><br>
@@ -30,17 +29,17 @@
                   <%= link_to "#{tag_post.post_comments.count}コメント", post_path(tag_post.id) %>
                 </td>
               </tr>
-            </tbody>
-          </table>
         <% end %>
+        </tbody>
+      </table>
 
       <% else %>
         <h2>大阪GAMESNSへようこそ！</h2>
         <p>ログインすれば投稿とコメントを見る以外の機能も使えるようになります！</p>
           <br>
+      <table class="table table-striped">
+        <tbody>
         <% @posts.each do |post| %>
-          <table class="table table-striped">
-            <tbody>
               <tr>
                 <th>
                   <%= post.enduser.nickname %><br>
@@ -51,10 +50,10 @@
                   </td>
                   <td><%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %></td>
                 </tr>
-              </tbody>
-            </table>
         <% end %>
       <% end %>
+      </tbody>
+    </table>
     </div>
   </div>
 </div>
