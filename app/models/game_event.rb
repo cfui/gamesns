@@ -1,2 +1,0 @@
-class GameEvent < ApplicationRecord
-end
