@@ -25,7 +25,7 @@
  }
 
 
-// header部分
+// --------header部分----------
 
 .log {
 	color: gray;
@@ -37,15 +37,15 @@ header {
 
 
 .header-list {
-    width: 100px;
-    display: inline-block;
-    padding-top: 40px;
+  width: 100px;
+  display: inline-block;
+  padding-top: 40px;
 }
 
 .enduser-header-list {
-    width: 150px;
-    display: inline-block;
-    padding-top: 40px;
+  width: 150px;
+  display: inline-block;
+  padding-top: 40px;
 }
 
 .enduser-header-list:last-child {
@@ -58,15 +58,36 @@ h2 {
 }
 
 
+//------heaer部分終了------
 
-// footer部分
+
+
+
+
+body {
+  display: flex;
+  flex-flow: column;
+  min-height: 100vh;
+}
+
+main {
+  flex: 1;
+}
+
+
+
+
+// ---------footer部分---------
 
 footer {
-  height: 5%;
+  height: 30px;
   width: 100%;
   background-color: black;
   color: white;
+
 }
+
+
 
 
 
