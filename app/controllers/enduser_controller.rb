@@ -34,8 +34,6 @@ class EnduserController < ApplicationController
     enduser = Enduser.find(params[:id])
     enduser.destroy
     redirect_to admin_index_path
-  	session[:enduser_mail] = nil
-  	redirect_to "/post/new"
   end
 
   def update
