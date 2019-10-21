@@ -7,6 +7,9 @@
         <div class="padding">
           <b><%= entry.enduser.nickname %></b>
           <%= attachment_image_tag entry.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+          <button type="button" class="btn btn-default active">
+            <%= link_to 'ユーザー詳細ページへ', enduser_path(entry.enduser.id),:style=>"color:black;" %>
+          </button>
           <br><br><br>
         </div>
       <% end %>
@@ -37,6 +40,7 @@
         <%= f.submit "投稿" %>
         <br><br>
       <% end %>
+      <%=link_to '投稿ホームへ戻る', new_post_path, :style => "color:black" %>
     </div>
   </div>
 </div>

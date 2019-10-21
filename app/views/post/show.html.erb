@@ -11,7 +11,7 @@
 			  :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
 			</th>
 			<td>
-			  <%= @post.postbody %><br>
+			  <h4><%= @post.postbody %></h4><br>
 			  <%= attachment_image_tag @post, :post_image, :fill, 400, 300, format: 'jpeg' %>
 			</td>
 		  </tr>
@@ -35,7 +35,10 @@
 		  <%= attachment_image_tag post_comment.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
 		</th>
 		<td><%= post_comment.comment %></td>
-		<td><%= link_to 'ユーザー詳細ページへ', enduser_path(post_comment.enduser.id) %></td>
+		<% if enduser_signed_in? %>
+		　　<td><%= link_to 'ユーザー詳細ページへ', enduser_path(post_comment.enduser.id) %></td>
+		<% else %>
+　　　　　<% end %>
 	  </tr>
     <% end %>
   </tbody>

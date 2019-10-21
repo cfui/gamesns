@@ -21,7 +21,7 @@
             <% if enduser_signed_in? %>
               <div class="col-xs-11">
                 <ul>
-                  <li class="enduser-header-list"><%=link_to 'ホーム', new_post_path ,:style=>"color:white;" %></li>
+                  <li class="enduser-header-list"><%=link_to '投稿ホーム', new_post_path ,:style=>"color:white;" %></li>
                   <li class="enduser-header-list"><%=link_to 'about', home_about_path ,:style=>"color:white;" %></li>
                   <li class="enduser-header-list"><%= link_to 'マイページ', enduser_path(current_enduser.id), :style=>"color:white;" %></li>
                   <li class="enduser-header-list"><%= link_to 'マイページ編集', edit_enduser_path(current_enduser.id) ,:style=>"color:white;" %></li>
@@ -39,8 +39,9 @@
 
             <% else %>
               <div class="col-xs-7"></div>
-                <div class="col-xs-4">
+                <div class="col-xs-5">
                   <ul class="header-ul">
+                    <li class="header-list"><%=link_to 'about', home_about_path ,:style=>"color:white;" %></li>
                     <li class="header-list"><%=link_to 'ログイン', new_enduser_session_path ,:style=>"color:white;" %> </li>
                     <li class="header-list"><%=link_to '新規登録', new_enduser_registration_path ,:style=>"color:white;" %></li>
                   </ul>

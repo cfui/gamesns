@@ -28,6 +28,9 @@ class EnduserController < ApplicationController
 
   def edit
     @enduser = Enduser.find(params[:id])
+    if @enduser != current_enduser
+      redirect_to edit_enduser_path(current_enduser.id)
+    end
   end
 
   def destroy
