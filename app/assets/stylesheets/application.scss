@@ -33,6 +33,7 @@
 
 header {
     background-color: black;
+    height: 70px;
 }
 
 
@@ -63,15 +64,8 @@ h2 {
 
 
 
-
-body {
-  display: flex;
-  flex-flow: column;
-  min-height: 100vh;
-}
-
 main {
-  flex: 1;
+  min-height: 100vh;
 }
 
 

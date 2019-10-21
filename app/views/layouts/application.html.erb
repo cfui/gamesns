@@ -7,62 +7,68 @@
 
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
+
   </head>
-
   <body>
-    <header>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-2">
-            <h1 class="log">GameSns</h1>
-          </div>
+    <div class="animsition">
+      <header>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-2">
+              <h1 class="log">GameSns</h1>
+            </div>
 
-          <div class="col-xs-10">
-            <% if enduser_signed_in? %>
-              <div class="col-xs-11">
-                <ul>
-                  <li class="enduser-header-list"><%=link_to '投稿ホーム', new_post_path ,:style=>"color:white;" %></li>
-                  <li class="enduser-header-list"><%=link_to 'about', home_about_path ,:style=>"color:white;" %></li>
-                  <li class="enduser-header-list"><%= link_to 'マイページ', enduser_path(current_enduser.id), :style=>"color:white;" %></li>
-                  <li class="enduser-header-list"><%= link_to 'マイページ編集', edit_enduser_path(current_enduser.id) ,:style=>"color:white;" %></li>
-                  <li class="enduser-header-list"><%= link_to 'ログアウト', destroy_enduser_session_path, :style=>"color:white;", method: :delete %></li>
-                </ul>
-              </div>
-
-            <% elsif admin_signed_in? %>
-            <div class="col-xs-8"></div>
-              <div class="col-xs-4">
-                <ul>
-                  <li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, :style=>"color:white;", method: :delete %></li>
-                </ul>
-              </div>
-
-            <% else %>
-              <div class="col-xs-7"></div>
-                <div class="col-xs-5">
-                  <ul class="header-ul">
-                    <li class="header-list"><%=link_to 'about', home_about_path ,:style=>"color:white;" %></li>
-                    <li class="header-list"><%=link_to 'ログイン', new_enduser_session_path ,:style=>"color:white;" %> </li>
-                    <li class="header-list"><%=link_to '新規登録', new_enduser_registration_path ,:style=>"color:white;" %></li>
+            <div class="col-xs-10">
+              <% if enduser_signed_in? %>
+                <div class="col-xs-11">
+                  <ul>
+                    <li class="enduser-header-list">
+                      <%=link_to 'ホーム', new_post_path ,:style=>"color:white;" %></li>
+                    <li class="enduser-header-list"><%=link_to 'about', home_about_path ,:style=>"color:white;" %></li>
+                    <li class="enduser-header-list"><%= link_to 'マイページ', enduser_path(current_enduser.id), :style=>"color:white;" %></li>
+                    <li class="enduser-header-list"><%= link_to 'マイページ編集', edit_enduser_path(current_enduser.id) ,:style=>"color:white;" %></li>
+                    <li class="enduser-header-list"><%= link_to 'ログアウト', destroy_enduser_session_path, :style=>"color:white;", method: :delete %></li>
                   </ul>
                 </div>
-            </div>
-            <% end %>
-          </div>
-      </div>
-    </header>
-    <main>
-      <%= yield %>
-    </main>
-    <footer>
-      <div class="container">
-        <div class="row">
-          <div class="col-xs-9"></div>
-            <div class="col-xs-3">
-              <p>gamesns.inc</p>
+
+              <% elsif admin_signed_in? %>
+              <div class="col-xs-8"></div>
+                <div class="col-xs-4">
+                  <ul>
+                    <li class="header-list"><%= link_to "ログアウト", destroy_admin_session_path, :style=>"color:white;", method: :delete %></li>
+                  </ul>
+                </div>
+
+              <% else %>
+                <div class="col-xs-7"></div>
+                  <div class="col-xs-5">
+                    <ul class="header-ul">
+                      <li class="header-list"><%=link_to 'about', home_about_path ,:style=>"color:white;" %></li>
+                      <li class="header-list"><%=link_to 'ログイン', new_enduser_session_path ,:style=>"color:white;" %> </li>
+                      <li class="header-list"><%=link_to '新規登録', new_enduser_registration_path ,:style=>"color:white;" %></li>
+                    </ul>
+                  </div>
+              </div>
+              <% end %>
             </div>
         </div>
-      </div>
-    </footer>
+
+      </header>
+      <main>
+        <%= yield %>
+      </main>
+
+      <footer>
+        <div class="container">
+          <div class="row">
+            <div class="col-xs-9"></div>
+              <div class="col-xs-3">
+                <p>gamesns.inc</p>
+              </div>
+          </div>
+        </div>
+      </footer>
+    </div>
   </body>
 </html>
+

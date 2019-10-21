@@ -1,3 +1,4 @@
+<div class="animsition">
 <div class="container">
   <div class="row">
     <div class="col-xs-2"></div>
@@ -62,7 +63,7 @@
                     <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
                   </td>
                   <td>
-                    <button type="button" class="btn btn-success active"><%= link_to "#{post.post_comments.count}コメント", post_path(post.id), :style=>"color:white;" %></td>
+                    <button type="button" class="btn btn-success active"><%= link_to "#{post.post_comments.count}コメント", post_path(post.id), :style=>"color:white;" %></button></td>
                 </tr>
         <% end %>
       <% end %>
