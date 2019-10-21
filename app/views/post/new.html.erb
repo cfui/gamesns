@@ -14,6 +14,8 @@
             <br><br><br>
         <% end %>
 
+<!--       --------ログイン時ユーザー投稿一覧--------- -->
+
       <table class="table table-striped">
         <tbody>
         <% @tag_posts.each do |tag_post| %>
@@ -25,14 +27,25 @@
                 <td><%= tag_post.postbody %><br>
                   <%= attachment_image_tag tag_post, :post_image, :fill, 400, 300, format: 'jpeg' %>
                 </td>
-                <td><%= link_to 'ユーザー詳細ページへ', enduser_path(tag_post.enduser.id) %><br><br>
-                  <%= link_to "#{tag_post.post_comments.count}コメント", post_path(tag_post.id) %>
+                <td>
+                  <button type="button" class="btn btn-default active">
+                      <%= link_to 'ユーザー詳細ページへ', enduser_path(tag_post.enduser.id),
+                      :style=>"color:black;" %>
+                    </button><br><br>
+
+                  <button type="button" class="btn btn-success active">
+                    <%= link_to "#{tag_post.post_comments.count}コメント", post_path(tag_post.id) , :style=>"color:white;"%>
+                  </button>
                 </td>
               </tr>
         <% end %>
         </tbody>
       </table>
 
+      <!-- -------------ログイン時ユーザー投稿一覧終わり-------------- -->
+
+
+      <!-- --------------非ログイン時のユーザー投稿一覧-------------- -->
       <% else %>
         <h2>大阪GAMESNSへようこそ！</h2>
         <p>ログインすれば投稿とコメントを見る以外の機能も使えるようになります！</p>
@@ -48,7 +61,8 @@
                   <td><%= post.postbody %> <br>
                     <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
                   </td>
-                  <td><%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %></td>
+                  <td>
+                    <button type="button" class="btn btn-success active"><%= link_to "#{post.post_comments.count}コメント", post_path(post.id), :style=>"color:white;" %></td>
                 </tr>
         <% end %>
       <% end %>

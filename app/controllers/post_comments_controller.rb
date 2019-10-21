@@ -4,10 +4,6 @@ class PostCommentsController < ApplicationController
   	@post_comment = PostComment.new
   end
 
-  def show
-  	@posts = Post.find(params[:id])
-  end
-
   def create
   	post = Post.find(params[:post_id])
   	comment = current_enduser.post_comments.new(post_comment_params)
