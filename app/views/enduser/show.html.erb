@@ -9,8 +9,13 @@
         <B><%= @enduser.nickname %></B>
         <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
         <br><br><br>
-        <b>メールアドレス</b>
-        <%= @enduser.email %>
+
+        <% if @enduser == current_enduser %>
+          <b>メールアドレス</b>
+          <%= @enduser.email %>
+        <% else %>
+        <% end %>
+
         <br><br><br>
         <b>プロフィール</b>
         <%= @enduser.profile_text %>
