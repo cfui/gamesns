@@ -26,18 +26,22 @@
         <h3>ユーザー投稿一覧</h3>
         <table class="table table-striped">
           <tbody>
-        <% @posts.each do |post| %>
-          <tr>
-            <th>
-              <%= post.enduser.nickname %><br>
-              <%= attachment_image_tag post.enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th>
-            <td>
-              <%= post.postbody %><br>
-              <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
-            </td>
-            <td><%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %></td>
-          </tr>
-        <% end %>
+            <% @posts.each do |post| %>
+              <tr>
+                <th>
+                  <%= post.enduser.nickname %><br>
+                  <%= attachment_image_tag post.enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %></th>
+                <td>
+                  <%= post.postbody %><br>
+                  <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
+                </td>
+                <td><%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %></td>
+                <% if @enduser == current_enduser %>
+                  <td><%= link_to "削除", post_path(post.id), method: :delete %></td>
+                <% else %>
+                <% end %>
+              </tr>
+            <% end %>
           </tbody>
         </table>
 

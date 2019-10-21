@@ -10,15 +10,13 @@ Rails.application.routes.draw do
   resources :admin, only: [:index, :destroy]
 
 
-  resources :post, only: [:new, :show, :create] do
+  resources :post, only: [:new, :show, :create, :destroy] do
     resource :post_comments, only: [:create]
   end
 
   resources :dm_messages, only: [:create]
 
   resources :dm_rooms, only: [:show, :create]
-
-  resources :game_event, only: [:index, :new, :edit, :show, :create, :update]
 
 
   resources :enduser, only: [:index, :show, :edit, :update, :destroy ] do

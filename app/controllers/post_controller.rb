@@ -35,8 +35,6 @@ class PostController < ApplicationController
   end
 
 
-
-
   def show
     @post = Post.find(params[:id])
     @post_comment = PostComment.new
@@ -48,6 +46,12 @@ class PostController < ApplicationController
     @post.enduser_id = current_enduser.id
   	@post.save
   	redirect_to new_post_path
+  end
+
+  def destroy
+    post = Post.find(params[:id])
+    post.destroy
+    redirect_to enduser_path(current_enduser.id)
   end
 
   private
