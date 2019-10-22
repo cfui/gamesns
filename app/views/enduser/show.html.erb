@@ -5,9 +5,6 @@
       <div class="text-center">
         <h3>ユーザー詳細画面</h3>
 
-        <%= link_to 'dm一覧', dm_rooms_path %>
-
-
         <B><%= @enduser.nickname %></B>
         <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
         <br><br><br>
