@@ -1,0 +1,5 @@
+<% @anotherEntries.each do |e| %>
+  <%= link_to dm_room_path(e.dm_room.id) do %>
+    <%= e.enduser.nickname %>とのDM<br>
+  <% end %>
+<% end %>

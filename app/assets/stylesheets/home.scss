@@ -5,20 +5,33 @@
 
 //トップページ
 
-home-body {
+
+body {
 	text-align: center;
+	min-height: 100vh;
 }
-
-
-
-
-//aboutページ
-
 
 .background {
     background-size: cover;
 	background-image: url('/game.jpg');
+	height: 100vh;
 }
+
+
+
+.top-line {
+	padding-bottom: 10%;
+}
+
+
+
+h4 {
+	padding-bottom: 5%;
+}
+
+
+//aboutページ
+
 
 .about-box {
 	border: 10px  solid;

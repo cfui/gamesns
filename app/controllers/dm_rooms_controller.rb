@@ -1,6 +1,14 @@
 class DmRoomsController < ApplicationController
   before_action :authenticate_enduser!
+  def index
+  @currentEntries = current_enduser.dm_entries
+  myRoomIds = []
 
+  @currentEntries.each do |entry|
+    myRoomIds << entry.dm_room.id
+  end
+  @anotherEntries = DmEntry.where(dm_room_id: myRoomIds).where('enduser_id != ?', current_enduser.id)
+end
 
 
   def show
