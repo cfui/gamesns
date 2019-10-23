@@ -4,6 +4,7 @@
     <div class="col-xs-2"></div>
     <div class="col-xs-9">
       <% if enduser_signed_in? %>
+        <b class="error"><%= flash[:notice] %></b>
         <h3>投稿ホーム</h3>
 
         <%= form_for(@post, url: post_index_path) do |f| %>
@@ -54,17 +55,20 @@
       <table class="table table-striped">
         <tbody>
         <% @posts.each do |post| %>
-              <tr>
-                <th>
-                  <%= post.enduser.nickname %><br>
-                  <%= attachment_image_tag post.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-                </th>
-                  <td><%= post.postbody %> <br>
-                    <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
-                  </td>
-                  <td>
-                    <button type="button" class="btn btn-success active"><%= link_to "#{post.post_comments.count}コメント", post_path(post.id), :style=>"color:white;" %></button></td>
-                </tr>
+          <tr>
+            <th>
+              <%= post.enduser.nickname %><br>
+              <%= attachment_image_tag post.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+            </th>
+            <td>
+              <%= post.postbody %> <br>
+              <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
+            </td>
+            <td>
+              <button type="button" class="btn btn-success active"><%= link_to "#{post.post_comments.count}コメント", post_path(post.id), :style=>"color:white;" %>
+              </button>
+            </td>
+          </tr>
         <% end %>
       <% end %>
       </tbody>

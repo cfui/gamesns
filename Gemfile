@@ -76,4 +76,5 @@ gem 'jquery-rails'
 gem 'pry-byebug'
 gem 'cocoon'
 gem 'ransack'
+gem 'factory_bot_rails'
 

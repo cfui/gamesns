@@ -6,4 +6,5 @@ class Post < ApplicationRecord
   attachment :post_image
 
   default_scope -> { order(created_at: :desc) }
+  validates :postbody, presence: true
 end

@@ -48,8 +48,12 @@ class PostController < ApplicationController
   def create
   	@post = Post.new(post_params)
     @post.enduser_id = current_enduser.id
-  	@post.save
-  	redirect_to new_post_path
+  	if @post.save
+  	  redirect_to new_post_path
+    else
+      flash[:notice] = 'エラー！投稿が空白です'
+      redirect_to new_post_path
+    end
   end
 
   def destroy
