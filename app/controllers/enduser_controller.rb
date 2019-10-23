@@ -52,6 +52,6 @@ class EnduserController < ApplicationController
 
   private
   def enduser_params
-    params.require(:enduser).permit(:nickname, :profile_text, :profile_image, enduser_gametags_attributes: [:id, :tag_name, :_destroy])
+    params.require(:enduser).permit(:nickname, :address, :profile_text, :profile_image, enduser_gametags_attributes: [:id, :tag_name, :_destroy])
   end
 end

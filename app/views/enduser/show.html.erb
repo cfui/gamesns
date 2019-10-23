@@ -5,9 +5,13 @@
       <div class="text-center">
         <h3>ユーザー詳細画面</h3>
 
-        <B><%= @enduser.nickname %></B>
+        <b><%= @enduser.nickname %></b>
         <%= attachment_image_tag @enduser, :profile_image, :fill, 60, 60, fallback: "no_image.jpg" %>
         <br><br><br>
+        <b>在住地</b>
+        <p><%= @enduser.address %></p>
+
+        <br>
 
         <% if @enduser == current_enduser %>
           <b>メールアドレス</b>

@@ -17,11 +17,16 @@
         </div>
           <br>
         <div class="field">
-          <p>プロフィール</p>
+          <p>プロフィール（空欄化)</p>
           <%= f.text_area :profile_text %>
         </div>
-
           <br>
+        <div class="field">
+          <%= f.select :address,[["東京", "東京"],["大阪","大阪"],["名古屋","名古屋"]] %>
+        </div>
+
+
+
           <h4>お気に入りのゲームタグを登録(複数可）</h4>
 
         <!-- cocoonタグ -->
