@@ -4,19 +4,25 @@
     <div class="col-xs-9">
 	  <h1>ユーザー一覧</h1>
 
-
 	  <%= search_form_for(@q, url: admin_index_path) do |f| %>
 	    <%= f.search_field :nickname_cont %>
 		<%= f.submit "ユーザー検索" %>
 	  <% end %>
 
+  <table class="table table-striped">
+	<tbody>
 	  <% @endusers.each do |enduser| %>
-	    <b><%= enduser.nickname %></b>
-		<%= attachment_image_tag enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-		  <br>
-		<%= link_to "強制退会", enduser_path(enduser.id),method: :delete,"data-confirm" => "本当に削除しますか？" %>
+		<tr>
+			<th>
+				<%= enduser.nickname %><br>
+			    <%= attachment_image_tag enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+		    </th>
+			<td><%= link_to "強制退会", enduser_path(enduser.id),method: :delete,"data-confirm" => "本当に削除しますか？" %></td>
+		</tr>
 		    <br><br><br>
 	  <% end %>
+    </tbody>
+  </table>
 
      </div>
   </div>

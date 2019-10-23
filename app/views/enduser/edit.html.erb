@@ -2,7 +2,6 @@
   <div class="row">
     <div class="col-xs-4"></div>
     <div class="col-xs-8">
-        
         <b class="error"><%= flash[:notice] %></b>
         <h1>マイページ編集</h1>
           <%= form_for(@enduser) do |f| %>
@@ -27,7 +26,7 @@
 
         <!-- cocoonタグ -->
           <%= f.fields_for :enduser_gametags do |enduser_gametag| %>
-        	<%= render 'enduser_gametag_fields', f: enduser_gametag %>
+        	  <%= render 'enduser_gametag_fields', f: enduser_gametag %>
           <% end %>
         <div class="links">
           <%= link_to_add_association '>>お気に入りのゲームタグを登録 & 追加',f, :enduser_gametags %>

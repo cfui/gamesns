@@ -39,9 +39,16 @@
                   <%= post.postbody %><br>
                   <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
                 </td>
-                <td><%= link_to "#{post.post_comments.count}コメント", post_path(post.id) %></td>
+                <td>
+                  <button class="btn btn-success"><%= link_to "#{post.post_comments.count}コメント", post_path(post.id), :style=>"color:white;"%>
+                  </button>
+                </td>
                 <% if @enduser == current_enduser %>
-                  <td><%= link_to "削除", post_path(post.id), method: :delete %></td>
+                  <td>
+                    <button class="btn btn-danger">
+                      <%= link_to "削除", post_path(post.id), method: :delete, :style =>"color:white;" %>
+                    </button>
+                  </td>
                 <% else %>
                 <% end %>
               </tr>
