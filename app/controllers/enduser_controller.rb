@@ -2,7 +2,7 @@ class EnduserController < ApplicationController
 
   def show
   	@enduser = Enduser.find(params[:id])
-    @posts = @enduser.posts
+    @posts = @enduser.posts.page(params[:page])
     @gametags = @enduser.enduser_gametags
     @room = DmRoom.new
 

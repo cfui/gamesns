@@ -59,6 +59,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @posts, class: "paginate" %>
 
         <!-- DM機能 -->
         <% if @isRoom == true %>

@@ -28,6 +28,7 @@
             <% end %>
           </tbody>
         </table>
+        <%= paginate @messages, class: "paginate" %>
 
       <% else %>
         <p>メッセージはまだありません</p>

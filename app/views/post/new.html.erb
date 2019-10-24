@@ -43,6 +43,7 @@
         <% end %>
         </tbody>
       </table>
+      <%= paginate @tag_posts, class: "paginate" %>
 
       <!-- -------------ログイン時ユーザー投稿一覧終わり-------------- -->
 
@@ -73,6 +74,7 @@
       <% end %>
       </tbody>
     </table>
+    <%= paginate @posts, class: "paginate" %>
     </div>
   </div>
 </div>

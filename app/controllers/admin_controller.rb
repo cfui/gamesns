@@ -1,8 +1,8 @@
 class AdminController < ApplicationController
   def index
-  	@q = Enduser.ransack(params[:q])
-  	@endusers = @q.result(distinct: true)
-  	# @enduser = Enduser.find(params[:id])
+  	@enduser = Enduser.ransack(params[:q])
+  	@endusers = @enduser.result(distinct: true)
+  	@endusers = @endusers.page(params[:page])
   end
 
 end

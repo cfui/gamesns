@@ -1,6 +1,7 @@
 class PostController < ApplicationController
   def new
-    @posts = Post.all.order(created_at: :desc)
+    @posts = Post.all.page(params[:page])
+
     if enduser_signed_in?
       @post = Post.new
       @user= current_enduser.id
@@ -24,14 +25,18 @@ class PostController < ApplicationController
         @user_tags_ids << tag.enduser_id
       end
 
+      # 住所検索をする為、ログインしているユーザーの住所idを変数へ
+      @user_address = current_enduser.address
+
+
       # タグが一致したユーザーidと全体のユーザーidを検索
       @user_tag = Enduser.where(id: @user_tags_ids) #自分と共通のタグを持っている人
+      # 住所とタグが一致したユーザーのidを取得する
+      @user_tag_address = @user_tag.where(address: @user_address)
 
-      
-      # ↑のままだと投稿がユーザー基準で表示されてしまうので、タグが一致したユーザーと全体のユーザーidを検索
-      @tag_posts = Post.where(enduser_id: @user_tag) #タグが一致したユーザーの投稿を出している
-
-
+      # ↑のままだと投稿が新着順で表示されず、ユーザー投稿順で表示されるのでpostモデルで検索
+      @tag_posts = Post.where(enduser_id: @user_tag_address) #タグが一致したユーザーの投稿を出している
+      @tag_posts = @tag_posts.page(params[:page])
 
      # ----------タグ機能終了----------
     else

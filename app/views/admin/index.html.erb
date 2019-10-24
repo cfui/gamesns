@@ -4,7 +4,7 @@
     <div class="col-xs-9">
 	  <h1>ユーザー一覧</h1>
 
-	  <%= search_form_for(@q, url: admin_index_path) do |f| %>
+	  <%= search_form_for(@enduser, url: admin_index_path) do |f| %>
 	    <%= f.search_field :nickname_cont %>
 		<%= f.submit "ユーザー検索" %>
 	  <% end %>
@@ -23,6 +23,7 @@
 	  <% end %>
     </tbody>
   </table>
+  <%= paginate @endusers, class: "paginate" %>
 
      </div>
   </div>

@@ -8,13 +8,14 @@ class DmRoomsController < ApplicationController
     myRoomIds << entry.dm_room.id
   end
   @anotherEntries = DmEntry.where(dm_room_id: myRoomIds).where('enduser_id != ?', current_enduser.id)
+  @anotherEntries = @anotherEntries.page(params[:page])
 end
 
 
   def show
     @room = DmRoom.find(params[:id])
     if DmEntry.where(enduser_id: current_enduser.id,dm_room_id: @room.id).present?
-      @messages = @room.dm_messages
+      @messages = @room.dm_messages.page(params[:page])
       @message = DmMessage.new
       @entries = @room.dm_entries
       # @enduser = @entries.enduser
