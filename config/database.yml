@@ -22,4 +22,12 @@ test:
 
 production:
   <<: *default
-  database: db/production.sqlite3
+
+  database: gamesns2
+  adapter: mysql2
+  encoding: utf8mb4
+  charset: utf8mb4
+  collattion: utf8mb4_ganerak_ci
+  host: rds-mysql-server.cmpf1wloph0b.us-east-2.rds.amazonaws.com
+  username: admin
+  password: Yspp0439

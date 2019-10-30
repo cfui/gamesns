@@ -35,7 +35,7 @@ plugin :tmp_restart
 
 bind "unix://#{Rails.root}/tmp/sockets/puma.sock"
 
-rails_root = Dir,pwd
+rails_root = Dir.pwd
 
 pidfile File.join(rails_root, 'tmp', 'pids', 'puma.state')
 

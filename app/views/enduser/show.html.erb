@@ -67,7 +67,7 @@
 
         <% else %>
           <% if @enduser != current_enduser %>
-            <%= form_for @room, url: dm_room_path,html: {method: 'GET'} do |f| %>
+            <%= form_for (@room)  do |f| %>
               <%= fields_for @entry do |entry| %>
                 <%= entry.hidden_field :enduser_id, value: @enduser.id %>
               <% end %>

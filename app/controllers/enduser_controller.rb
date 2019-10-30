@@ -4,9 +4,9 @@ class EnduserController < ApplicationController
   	@enduser = Enduser.find(params[:id])
     @posts = @enduser.posts.page(params[:page])
     @gametags = @enduser.enduser_gametags
+    
+# 　　DM機能
     @room = DmRoom.new
-
-    # DM機能
     @current_enduser_entry = DmEntry.where(enduser_id: current_enduser.id)
     @enduser_entry = DmEntry.where(enduser_id: @enduser.id)
     if @enduser.id == current_enduser.id
