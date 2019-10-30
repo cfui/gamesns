@@ -69,6 +69,7 @@
           <% if @enduser != current_enduser %>
             <%= form_for (@room)  do |f| %>
               <%= fields_for @entry do |entry| %>
+              <!-- enduser.idをenduser_idに入れてcreateアクションに送信 -->
                 <%= entry.hidden_field :enduser_id, value: @enduser.id %>
               <% end %>
 

@@ -41,6 +41,7 @@ pidfile File.join(rails_root, 'tmp', 'pids', 'puma.state')
 
 state_path File.join(rails_root, 'tmp', 'pids', 'puma.state')
 
+# ログの出力先
 stdout_redirect(
 
 	File.join(rails_root, 'log', 'puma.log'),

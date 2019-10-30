@@ -5,13 +5,13 @@
 	  <h3>DMした人一覧</h3>
 	  <table class="table table-striped">
 		<tbody>
-		  <% @anotherEntries.each do |e| %>
+		  <% @anotherEntries.each do |entry| %>
 			<tr>
 			  <th>
-				<%= link_to dm_room_path(e.dm_room.id) do %>
-				<%= attachment_image_tag e.enduser, 
+				<%= link_to dm_room_path(entry.dm_room.id) do %>
+				<%= attachment_image_tag entry.enduser, 
 				:profile_image, :fill, 100, 100, fallback: "no_image.jpg" %><br>
-				<%= e.enduser.nickname %>さんとDMする<br>
+				<%= entry.enduser.nickname %>さんとDMする<br>
 			  </th>
 			</tr>
 		    <% end %>
