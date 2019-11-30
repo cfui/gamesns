@@ -39,12 +39,12 @@ header {
 .header-list {
   width: 100px;
   display: inline-block;
-  padding-top: 40px;
+  padding-top: 10px;
 }
 
 .enduser-header-list {
   list-style-type: none;
-  padding-top: 40px;
+  padding-top: 10px;
 }
 
 .enduser-header-list:last-child {
@@ -84,10 +84,18 @@ footer {
 }
 
 
+
+// ------------ レスポンシブ対応-------------
+
+
 @media screen and (max-width: 1024px) {
   .enduser-header-list {
     display: none;
   }
+  .header-list {
+    display: none;
+  }
+
 
   // -----------ハンバーガーメニュー-----
   #hm-icon{
@@ -174,7 +182,7 @@ footer {
 }
 }
 
-// ---------PC画面時にメニューが表示されていた為、削除------------
+// ---------非レスポンシブ,PC画面時にメニューが表示されていた為、削除------------
 #sp-menu{
   display: none;
 }
