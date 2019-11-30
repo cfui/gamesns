@@ -19,10 +19,6 @@ Rails.application.routes.draw do
   resources :dm_rooms, only: [:index, :show, :create]
 
 
-  resources :enduser, only: [:index, :show, :edit, :update, :destroy ] do
-    member do
-      get 'dm'
-    end
-  end
+  resources :enduser, only: [:index, :show, :edit, :update, :destroy ] 
 end
 

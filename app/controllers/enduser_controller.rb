@@ -7,15 +7,17 @@ class EnduserController < ApplicationController
     
 # 　　DM機能
     @room = DmRoom.new
+    # ---dmroomが作成された時に自分のユーザーidと相手のユーザーidをentriesに記録する為,検索---
     @current_enduser_entry = DmEntry.where(enduser_id: current_enduser.id)
     @enduser_entry = DmEntry.where(enduser_id: @enduser.id)
     if @enduser.id == current_enduser.id
     else
-      @current_enduser_entry.each do |cu|
-        @enduser_entry.each do |u|
-          if cu.dm_room_id == u.dm_room_id then
+      @current_enduser_entry.each do |currentuser|
+        @enduser_entry.each do |user|
+          if currentuser.dm_room_id == user.dm_room_id then
+            # isRoom=trueと書いたのは、これがfalseだった場合に、dmroomを作成する条件分岐を書く為
             @isRoom = true
-            @roomId = cu.dm_room_id
+            @roomId = currentuser.dm_room_id
           end
         end
       end

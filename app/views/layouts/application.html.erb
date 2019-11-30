@@ -8,8 +8,15 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
 
+    <!-- ハンバーガーメニュー -->
+    <meta charset="utf8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width">
+    <link rel="stylesheet" href="css/style.css" media="all">
+
   </head>
   <body>
+    <div class="col-xs-12">
     <div class="animsition">
       <header>
         <div class="container">
@@ -40,8 +47,28 @@
                     <div class="col-xs-2">
                       <li class="enduser-header-list"><%= link_to 'ログアウト', destroy_enduser_session_path, :style=>"color:white;", method: :delete %></li>
                     </div>
-                  </ul>
 
+                  </ul>
+                  <div id="sp-menu">
+                    <ul>
+                      <li><%=link_to '投稿ホーム', new_post_path ,:style=>"color:white;" %></li>
+                      <li><%=link_to 'about', home_about_path ,:style=>"color:white;" %></li>
+                      <li><%= link_to 'マイページ', enduser_path(current_enduser.id), :style=>"color:white;" %></li>
+                      <li><%= link_to 'マイページ編集', edit_enduser_path(current_enduser.id) ,:style=>"color:white;" %></li>
+                      <li><%= link_to 'ログアウト', destroy_enduser_session_path, :style=>"color:white;", method: :delete %></li>
+                    </ul>
+                  </div>
+                   
+                  <div id="hm-icon">
+                    <a class="menu-trigger" href="#">
+                      <span></span>
+                      <span></span>
+                      <span></span>
+                    </a>
+                  </div>
+                  
+                  <script type="text/javascript" src="js/jquery.min.js"></script>
+                  <script type="text/javascript" src="js/script.js"></script>
 
               <% elsif admin_signed_in? %>
               <div class="col-xs-8"></div>
@@ -64,7 +91,7 @@
               <% end %>
             </div>
         </div>
-
+      </div>
       </header>
       <main>
         <%= yield %>
@@ -81,6 +108,10 @@
         </div>
       </footer>
     </div>
+
+     <!-- ハンバーガー -->
+
+
   </body>
 </html>
 

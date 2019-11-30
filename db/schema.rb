@@ -89,7 +89,7 @@ ActiveRecord::Schema.define(version: 2019_10_30_111324) do
     t.integer "enduser_id"
     t.string "post_image_id"
   end
-
+# dm_roomに入る二人のidの一致を見るために追加
   create_table "relations", force: :cascade do |t|
     t.integer "enduser1_id"
     t.integer "enduser2_id"
