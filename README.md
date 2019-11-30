@@ -1,24 +1,22 @@
-# README
+# サイト名
+GAMESNS
+<br>
+# 概要
+ゲーマー向けに作った地域限定型のSNSサイトです。
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+SNS上で人と仲良くなった時に、オフ会などがスムーズに出来るよう
 
-Things you may want to cover:
+住んでいる地域が同じで、プレイしているゲームも同じ人同士で交流出来るように設計しています。
+<br>
+# 使用法
 
-* Ruby version
+サイトにログイン後、在住設定やお気に入りのゲームタグいくつか登録することによって、
 
-* System dependencies
+同じ在住で同じタグを持つ、ユーザーの投稿が表示されるようになります。
 
-* Configuration
+何も表示されない場合は、同じタグを持つユーザーがいなかった場合です。
 
-* Database creation
 
-* Database initialization
+<br>
+ログインしない場合でも、全ユーザーの投稿などを見ることができます。
 
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
