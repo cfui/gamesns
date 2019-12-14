@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 2019_10_30_111324) do
+ActiveRecord::Schema.define(version: 2019_12_14_064536) do
 
   create_table "admins", force: :cascade do |t|
     t.datetime "created_at", null: false
@@ -65,10 +65,10 @@ ActiveRecord::Schema.define(version: 2019_10_30_111324) do
     t.datetime "last_sign_in_at"
     t.string "current_sign_in_ip"
     t.string "last_sign_in_ip"
-    t.string "password"
     t.string "nickname"
-    t.text "profile_text"
+    t.string "password"
     t.string "profile_image_id"
+    t.text "profile_text"
     t.string "address"
     t.index ["email"], name: "index_endusers_on_email", unique: true
     t.index ["reset_password_token"], name: "index_endusers_on_reset_password_token", unique: true
@@ -83,13 +83,13 @@ ActiveRecord::Schema.define(version: 2019_10_30_111324) do
   end
 
   create_table "posts", force: :cascade do |t|
+    t.text "postbody"
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
-    t.text "postbody"
     t.integer "enduser_id"
     t.string "post_image_id"
   end
-# dm_roomに入る二人のidの一致を見るために追加
+
   create_table "relations", force: :cascade do |t|
     t.integer "enduser1_id"
     t.integer "enduser2_id"
