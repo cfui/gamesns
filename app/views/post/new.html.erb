@@ -20,27 +20,27 @@
 
       <table class="table table-striped">
         <tbody>
-        <% @tag_posts.each do |tag_post| %>
-              <tr>
-                <th>
-                  <%= tag_post.enduser.nickname %><br>
-                  <%= attachment_image_tag tag_post.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-                </th>
-                <td><%= tag_post.postbody %><br>
-                  <%= attachment_image_tag tag_post, :post_image, :fill, 400, 300, format: 'jpeg' %>
-                </td>
-                <td>
-                  <button type="button" class="btn btn-default active">
-                      <%= link_to 'ユーザー詳細ページへ', enduser_path(tag_post.enduser.id),
-                      :style=>"color:black;" %>
-                    </button><br><br>
+          <% @tag_posts.each do |tag_post| %>
+                <tr>
+                  <th>
+                    <%= tag_post.enduser.nickname %><br>
+                    <%= attachment_image_tag tag_post.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+                  </th>
+                  <td><%= tag_post.postbody %><br>
+                    <%= attachment_image_tag tag_post, :post_image, :fill, 400, 300, format: 'jpeg' %>
+                  </td>
+                  <td>
+                    <button type="button" class="btn btn-default active">
+                        <%= link_to 'ユーザー詳細ページへ', enduser_path(tag_post.enduser.id),
+                        :style=>"color:black;" %>
+                      </button><br><br>
 
-                  <button type="button" class="btn btn-success active">
-                    <%= link_to "#{tag_post.post_comments.count}コメント", post_path(tag_post.id) , :style=>"color:white;"%>
-                  </button>
-                </td>
-              </tr>
-        <% end %>
+                    <button type="button" class="btn btn-success active">
+                      <%= link_to "#{tag_post.post_comments.count}コメント", post_path(tag_post.id) , :style=>"color:white;"%>
+                    </button>
+                  </td>
+                </tr>
+          <% end %>
         </tbody>
       </table>
       <small>何も投稿が表示されない場合はマイページ編集のお気に入りのゲームタグを登録,変更をしてください</small>
@@ -56,22 +56,22 @@
           <br>
       <table class="table table-striped">
         <tbody>
-        <% @posts.each do |post| %>
-          <tr>
-            <th>
-              <%= post.enduser.nickname %><br>
-              <%= attachment_image_tag post.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
-            </th>
-            <td>
-              <%= post.postbody %> <br>
-              <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
-            </td>
-            <td>
-              <button type="button" class="btn btn-success active"><%= link_to "#{post.post_comments.count}コメント", post_path(post.id), :style=>"color:white;" %>
-              </button>
-            </td>
-          </tr>
-        <% end %>
+          <% @posts.each do |post| %>
+            <tr>
+              <th>
+                <%= post.enduser.nickname %><br>
+                <%= attachment_image_tag post.enduser, :profile_image, :fill, 70, 70, fallback: "no_image.jpg" %>
+              </th>
+              <td>
+                <%= post.postbody %> <br>
+                <%= attachment_image_tag post, :post_image, :fill, 400, 300, format: 'jpeg' %>
+              </td>
+              <td>
+                <button type="button" class="btn btn-success active"><%= link_to "#{post.post_comments.count}コメント", post_path(post.id), :style=>"color:white;" %>
+                </button>
+              </td>
+            </tr>
+          <% end %>
       <% end %>
       </tbody>
     </table>

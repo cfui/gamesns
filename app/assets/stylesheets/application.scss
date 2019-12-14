@@ -33,6 +33,7 @@
 
 header {
     background-color: black;
+    height: 70px;
 }
 
 
@@ -97,7 +98,21 @@ footer {
   }
 
 
-  // -----------ハンバーガーメニュー-----
+// ------------レスポンシブ対応、bootstrap------------
+  .col-xs-2 {
+    display: none;
+  }
+
+  .col-xs-4 {
+    display: none;
+  }
+
+  .col-xs-9{
+    width: 100%;
+  }
+
+
+  // -----------レスポンシブ 対応、ハンバーガーメニュー-----
   #hm-icon{
   position: fixed;
   right: 20px;
@@ -182,7 +197,7 @@ footer {
 }
 }
 
-// ---------非レスポンシブ,PC画面時にメニューが表示されていた為、削除------------
+// ---------非レスポンシブ,PC画面時にハンバーガーメニューが表示されていた為、削除------------
 #sp-menu{
   display: none;
 }
