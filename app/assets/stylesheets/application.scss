@@ -89,7 +89,7 @@ footer {
 // ------------ レスポンシブ対応-------------
 
 
-@media screen and (max-width: 1024px) {
+@media screen and (max-width: 1200px) {
   .enduser-header-list {
     display: none;
   }
@@ -99,13 +99,6 @@ footer {
 
 
 // ------------レスポンシブ対応、bootstrap------------
-  .col-xs-2 {
-    display: none;
-  }
-
-  .col-xs-4 {
-    display: none;
-  }
 
   .col-xs-9{
     width: 100%;
@@ -196,6 +189,14 @@ footer {
   font-weight: bold;
 }
 }
+
+
+@media screen and (max-width: 1024px) {
+  .font-responsive {
+    font-size: 20px;
+  }
+  }
+
 
 // ---------非レスポンシブ,PC画面時にハンバーガーメニューが表示されていた為、削除------------
 #sp-menu{
