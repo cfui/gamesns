@@ -67,7 +67,7 @@ gem 'tzinfo-data', platforms: [:mingw, :mswin, :x64_mingw, :jruby]
     gem "refile", require: "refile/rails", github: 'manfe/refile'
     gem  'refile-mini_magick'
     gem 'ransack'
-    gem 'kaminari', '~>1.1.1'
+    gem 'kaminari', '~>1.2.1'
     gem 'acts-as-taggable-on'
     gem 'devise'
     gem 'bootstrap-sass', '~> 3.3.6'
